@@ -2,29 +2,33 @@ package LA7.MichaelCoffey.DylanTarnacki;
 
 public class Node<E> implements INode<E> {
 
+	E dataValue;
+	Node<E> nextNode;
+	
 	Node(E dataValue){
-		
+		this.dataValue=dataValue;
 	}
 	
 	Node(E dataValue, Node<E> nextNode){
-		
+		this.dataValue = dataValue;
+		this.nextNode = nextNode;
 	}
 
 	@Override
 	public E getData() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return dataValue;
 	}
 
 	@Override
 	public Node<E> getNext() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return nextNode;
 	}
 
 	@Override
 	public void setNext(Node<E> next) {
-		// TODO Auto-generated method stub
+		nextNode = next;
 		
 	}
 	

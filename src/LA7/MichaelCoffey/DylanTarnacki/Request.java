@@ -40,7 +40,17 @@ public class Request<E extends Comparable<E>>{
 	}
 	
 	private double GPA_Cal(double[][] GPA_Array) {
-		
+		double totalGPA = 0.0;
+		double classGPA = 0.0;
+		double credits = 0.0;
+		for(int i = 0; i < GPA_Array.length; i++) {
+			double product = GPA_Array[i][0] * GPA_Array[i][1];
+			double classCredit = GPA_Array[i][1];
+			credits += classCredit;
+			classGPA += product;
+		}
+		totalGPA = classGPA / credits;
+		return totalGPA;
 	}
 
 }
