@@ -2,7 +2,11 @@ package LA7.MichaelCoffey.DylanTarnacki;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-
+/**
+ * 
+ * @author Dylan Tarnacki and Michael Coffey
+ *
+ */
 public class Controller implements IController {
 	private int totalRequests = 0;
 	private BufferedReader courseFile, requestFile;
@@ -13,6 +17,13 @@ public class Controller implements IController {
 	private String[] fields = new String[3];
 	private String[] fields1 = new String[13];
 
+	/**
+	 * this method is the constructor for the Controller class
+	 * @param requestQueue is the requested queue
+	 * @param courses are the courses being offered
+	 * @param fileIn is the data we read from
+	 * @param fileIn1 is the data we read from
+	 */
 	public Controller(PriorityQueue<Request> requestQueue, LinkedList<Course> courses,
 			BufferedReader fileIn, BufferedReader fileIn1) {
 		
@@ -22,6 +33,9 @@ public class Controller implements IController {
 		requestFile = fileIn1;
 	}
 	
+	/**
+	 * This method is what reads the course.txt file to find the courses offered and will catch the exceptions if there is any
+	 */
 	@Override
 	public void readCourseFile() {
 		try {
@@ -38,6 +52,10 @@ public class Controller implements IController {
 
 	}
 
+	
+	/**
+	 * this method will read the request.txt file and read the requests from students
+	 */
 	@Override
 	public void readRequestFile() {
 		try {
@@ -60,12 +78,18 @@ public class Controller implements IController {
 			
 		}
 	}
-
+	
+	/**
+	 * this method will add the requests into the queue
+	 */
 	@Override
 	public void addRequest(Request req) {
 		requestQueue.enqueue(req);
 	}
 
+	/**
+	 * this will process the request and get their name, department and the course number of what they are trying to take
+	 */
 	@Override
 	public void processRequests() {
 		Course courseObj;
@@ -83,6 +107,9 @@ public class Controller implements IController {
 		}
 	}
 
+	/**
+	 * this is the getter for the courses and course number
+	 */
 	@Override
 	public Course getCourse(String courseDept, int courseNumber) {
 		for(int i = 0; i < courses.size(); i++) {
@@ -95,6 +122,9 @@ public class Controller implements IController {
 		return null;
 	}
 
+	/**
+	 * this is the method that will print who is in the class
+	 */
 	@Override
 	public void printClassList() {
 		for(int i = 0; i < courses.size(); i++) {

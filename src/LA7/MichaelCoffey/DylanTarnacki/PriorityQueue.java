@@ -5,6 +5,10 @@ public class PriorityQueue<E> {
 	Node<E> front;
 	Node<E> tail;
 	
+	/**
+	 * this method will check to see if the queue is empty
+	 * @return boolean true or false if it is empty or not
+	 */
 	public boolean isEmpty() {
 		if(front == null) {
 			return true;
@@ -14,6 +18,10 @@ public class PriorityQueue<E> {
 		}
 	}
 	
+	/**
+	 * this method adds the requests in the correct order based on the requirements that are given
+	 * @param data is the request being put in
+	 */
 	public void enqueue(E data) {
 		Request req = (Request)data;
 		Node<E> newNode = new Node<E>(data,null);
@@ -50,16 +58,19 @@ public class PriorityQueue<E> {
 		}
 	}
 	
+	/**
+	 * this will first request enqueued and take it out and make the next request the front
+	 * @return
+	 */
 	public E dequeue() {
-		if(isEmpty()) {
-			throw new RuntimeException("Queue underflow");
-		}
-		
 		E temp = front.getData();
 		front = front.getNext();
 		return temp;
 	}
 	
+	/**
+	 * this method is for printing out the queues
+	 */
 	public void Qprint() {
 		System.out.println("<<<<<<<<<<<< Beginning of Queue Contents >>>>>>>>>>>>>>>>>");
 		Node<E> temp = front;

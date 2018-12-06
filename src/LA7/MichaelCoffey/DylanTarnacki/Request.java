@@ -5,6 +5,15 @@ public class Request<E> implements Comparable<E>{
 	private int courseNum;
 	private double[][] GPAs;
 	
+	/**
+	 * This is the constructor for the Requests
+	 * @param studentName is the name of the student
+	 * @param studentDept is the department the student is majoring in
+	 * @param studentLevel is the year of the student
+	 * @param courseDept is the department the student wants to take the class in
+	 * @param courseNumber is the course number
+	 * @param GPA_Array is the array of GPAs for each class they have taken
+	 */
 	public Request(String studentName, String studentDept, String studentLevel,
 			String courseDept, int courseNumber, double[][] GPA_Array) {
 		name = studentName;
@@ -14,16 +23,43 @@ public class Request<E> implements Comparable<E>{
 		courseNum = courseNumber;
 		GPAs = GPA_Array;
 	}
+	
+	/**
+	 * this is the getter for the course department
+	 * @return String courseDept is the course department
+	 */
 	public String getCourseDept() {
 		return courseDept;
 	}
+	
+	/**
+	 * getter for the course number
+	 * @return int courseNum is the course number
+	 */
 	public int getCourseNum() {
 		return courseNum;
 	}
+	
+	/**
+	 * getter for the name
+	 * @return String name is the student name
+	 */
 	public String getName() {
 		return name;
 	}
 	
+	/**
+	 * setter for the student name
+	 */
+	public void setName() {
+		this.name = name;
+	}
+	
+	/**
+	 * shows what year the student is in
+	 * @param level is the year of the student
+	 * @return is what year they are in
+	 */
 	public int yearsFromGraduation(String level) {
 		switch(level) {
 			case"Senior":
@@ -39,6 +75,11 @@ public class Request<E> implements Comparable<E>{
 		}
 	}
 	
+	/**
+	 * calculates the students GPA
+	 * @param GPA_Array is the GPAs of the student
+	 * @return double totalGPA is the students overall GPA
+	 */
 	private double GPA_Cal(double[][] GPA_Array) {
 		double totalGPA = 0.0;
 		double classGPA = 0.0;
@@ -53,6 +94,9 @@ public class Request<E> implements Comparable<E>{
 		return totalGPA;
 	}
 
+	/**
+	 * compares the students to each other
+	 */
 	public int compareTo(E comp) {
 		Request req = (Request)comp;
 		if(this.major.equals(this.courseDept) && req.major.equals(req.courseDept)) {
