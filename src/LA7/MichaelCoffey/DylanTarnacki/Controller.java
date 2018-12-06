@@ -30,6 +30,7 @@ public class Controller implements IController {
 				fields = courseLine.split(",");
 				courses.add(new Course(fields[0], Integer.parseInt(fields[1]), Integer.parseInt(fields[2])));
 			}
+			courseFile.close();
 		}
 		catch(IOException e) {
 			
@@ -46,12 +47,13 @@ public class Controller implements IController {
 				fields1 = requestLine.split(",");
 				for(int r = 0; r < GPAs.length; r++) {
 					for(int c = 0; c < GPAs[r].length; c++) {
-						GPAs[r][c] = Double.parseDouble(fields[i]);
+						GPAs[r][c] = Double.parseDouble(fields1[i]);
 						i++;
 					}
 				}
-				addRequest(new Request(fields[0], fields[1], fields[2], fields[3], Integer.parseInt(fields[4]), GPAs));
+				addRequest(new Request<Object>(fields1[0], fields1[1], fields1[2], fields1[3], Integer.parseInt(fields1[4]), GPAs));
 				totalRequests++;
+				requestFile.close();
 			}
 		}
 		catch(IOException e) {
