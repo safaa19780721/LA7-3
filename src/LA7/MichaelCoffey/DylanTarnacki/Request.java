@@ -1,6 +1,6 @@
 package LA7.MichaelCoffey.DylanTarnacki;
 
-public class Request<E extends Comparable<E>>{
+public class Request<E> implements Comparable<E>{
 	private String name,major,level,courseDept;
 	private int courseNum;
 	private double[][] GPAs;
@@ -53,4 +53,26 @@ public class Request<E extends Comparable<E>>{
 		return totalGPA;
 	}
 
+	public int compareTo(E comp) {
+		Request req = (Request)comp;
+		if(this.major.equals(this.courseDept) && req.major.equals(req.courseDept)) {
+			if(this.level.compareTo(req.level) == 0) {
+				if(this.GPA_Cal(this.GPAs) > req.GPA_Cal(req.GPAs)) {
+					return -1;
+				}
+				else {
+					return 1;
+				}
+			}
+			else if(this.level.compareTo(req.level) < 0) {
+				return 1;
+			}
+			else {
+				return -1;
+			}
+		}
+		else {
+			return 1;
+		}
+	}
 }
